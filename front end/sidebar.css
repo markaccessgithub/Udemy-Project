@@ -1,0 +1,46 @@
+/* Sidebar specific styles */
+
+/* Sidebar container */
+.ui.left.thin.visible.sidebar {
+    height: 100vh; /* Set sidebar height to full viewport height */
+    position: fixed; /* Fix the sidebar position */
+    top: 0;
+    left: 0;
+    width: 200px; /* Adjust width as needed */
+    z-index: 1000; /* Ensure it sits above other content */
+}
+
+/* Pushes the main content to the right */
+.pusher {
+    margin-left: 200px; /* Same as sidebar width */
+    padding: 1em;
+}
+
+/* Vertical menu */
+.ui.inverted.vertical.menu {
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - 40px); /* Adjust for the height of the logo */
+}
+
+/* Menu items */
+.ui.inverted.vertical.menu .item {
+    text-align: center; /* Center align text within menu items */
+    padding: 1em 0; /* Add padding above and below each item */
+    margin-top: 10px; /* Add margin between each menu item */
+}
+
+/* Sidebar header */
+.sidebar-header {
+    display: flex;
+    justify-content: center; /* Center the logo */
+    align-items: center;
+    padding: 1em;
+    background-color: #1b1c1d; /* Same color as inverted sidebar */
+}
+
+/* Sidebar logo */
+.sidebar-logo {
+    width: 40px; /* Adjust the size of your logo */
+    height: 40px; /* Adjust the size of your logo */
+}
