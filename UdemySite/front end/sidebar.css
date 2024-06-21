@@ -45,8 +45,8 @@
 
 /* Sidebar logo */
 .sidebar-logo {
-    width: 40px; /* Adjust the size of your logo */
-    height: 40px; /* Adjust the size of your logo */
+    width: 100%; /* Adjust the size of your logo */
+    height: 100%; /* Adjust the size of your logo */
 }
 
 .main{

@@ -15,14 +15,14 @@
     <div class="ui left thin visible inverted vertical sidebar menu">
         <div class="sidebar-header">
             <div> <!-- Placeholder for logo -->
-                <img src="placeholder_logo.png" alt="Logo" class="sidebar-logo">
+                <img src="/images/loog.png" alt="Logo" class="sidebar-logo">
             </div>
         </div>
-        <a class="item" data-tab="home">
+        <a class="item" data-tab="login">
             <i class="sign in icon"></i>
             Log In
         </a>
-        <a class="item" data-tab="account">
+        <a class="item" data-tab="signup">
             <i class="sign in icon"></i>
             Sign Up
         </a>
@@ -32,25 +32,48 @@
         </a>
     </div>
     <div class="pusher">
-        <div class="ui inverted tab segment active tab-content" data-tab="home">
+        <div class="ui inverted tab segment active tab-content" data-tab="login">
+            <div class="ui inverted segment">
+                <form class="ui inverted form" method="POST" action="{{ url_for('login') }}">
+                    <div class="two fields">
+                        <div class="field">
+                        <label for="name">Username</label>
+                        <input placeholder="Username" type="text" id="username" name="username" required>
+                    </div>
+                    <div class="field">
+                        <label for="password">Password</label>
+                        <input placeholder="Password" type="password" id="password" name="password" required>
+                    </div>
+
+                    <div class="inline field">
+                        <div class="ui submit button" type="submit" value="submit">Submit</div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="ui inverted tab segment tab-content" data-tab="signup">
             <div class="ui inverted segment">
                 <div class="ui inverted form">
-                  <div class="two fields">
-                    <div class="field">
-                      <label>Username</label>
-                      <input placeholder="Username" type="text">
+                    <div class="two fields">
+                        <div class="field">
+                        <label>Username</label>
+                        <input placeholder="Username" type="text">
                     </div>
                     <div class="field">
-                      <label>Password</label>
-                      <input placeholder="Password" type="password">
+                        <label>Password</label>
+                        <input placeholder="Password" type="password">
                     </div>
-                  </div>
-                  <div class="inline field">
+                </div>
+                <div class="inline field">
                     <div class="ui checkbox">
-                      <input type="checkbox" tabindex="0">
-                      <label>I agree to the <a>terms and conditions</a></label>
+                        <input type="checkbox" tabindex="0">
+                        <label>I agree to the <a>terms and conditions</a></label>
                     </div>
-                <div class="ui submit button">Submit</div>
+                    <div class="ui submit button">Submit</div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
