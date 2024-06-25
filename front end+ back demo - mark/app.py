@@ -79,8 +79,8 @@ def login():
                             list = res.fetchall()
                             id = list[-1][0]
                             cursor.execute(
-                                "INSERT INTO user (User_Id, User_Name, User_Password, User_Email, User_Access) VALUES (?,?,?,?,?)", 
-                                ((id+1), name, hashlib.sha256(password.encode()).hexdigest(), 1, 0)
+                                "INSERT INTO user (User_Id, User_Name, User_Password, User_Access) VALUES (?,?,?,?)", 
+                                ((id+1), name, hashlib.sha256(password.encode()).hexdigest(), 0)
                                 )
                             conn.commit()
                         return render_template('welcome.html')
