@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/semantic.min.js" integrity="sha512-Xo0Jh8MsOn72LGV8kU5LsclG7SUzJsWGhXbWcYs2MAmChkQzwiW/yTQwdJ8w6UA9C6EVG18GHb/TrYpYCjyAQw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/semantic.min.css" integrity="sha512-KXol4x3sVoO+8ZsWPFI/r5KBVB/ssCGB5tsv2nVOKwLg33wTFP3fmnXa47FdSVIshVTgsYk/1734xSk9aFIa4A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{{url_for('static', filename='scripts/sidebar.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='scripts/style.css')}}">    
+    <title>Home</title>
+</head>
+<body>
+    <div class="main">
+    <div class="ui left thin visible inverted vertical sidebar menu">
+        <div class="sidebar-header">
+            <div> <!-- Placeholder for logo -->
+                <img  src="{{url_for('static', filename='images/s')}}" alt="Logo" class="sidebar-logo">
+            </div>
+        </div>
+        <a class="item" data-tab="home">
+            <i class="home icon"></i>
+            Home {{username}}
+        </a>
+        <a class="item" data-tab="account">
+            <i class="setting icon"></i>
+            Account
+        </a>
+        <a class="item" data-tab="gta">
+            <i class="info icon"></i>
+            Grand Theft Auto V
+        </a>
+        <a class="item" data-tab="lego">
+            <i class="info icon"></i>
+            Lego Marvel Superheroes
+        </a>
+        <a class="item" data-tab="lg1">
+            <i class="info icon"></i>
+            Lego Batman 1:<br>the Videogame
+        </a>
+        <a class="item" data-tab="rdrd2">
+            <i class="info icon"></i>
+             RD RD 2
+        </a>
+        <a class="item" data-tab="about">
+            <i class="info icon"></i>
+            About Us / Contact
+        </a>
+        <a class="item" href="/welcome">
+            <i class="sign out icon"></i>
+            Log Out
+        </a>
+    </div>
+
+    <div class="pusher">
+        <div class="ui tab segment active tab-content" data-tab="home">
+            <h3>Home Content</h3>
+            <p>Welcome to the Home page!</p>
+        </div>
+        <div class="ui tab segment tab-content" data-tab="account">
+            <h1>Account Settings</h1>
+            <div class="ui inverted segment">
+                <div class = "ui inverted form">
+                    <form method="POST">
+                    <div class="two fields">
+                        <div class="field">
+                            <label for="name">Change Username</label>
+                            <input placeholder="Username" type="text" id="name" name="name" required>
+                        </div>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="ui tab segment tab-content" data-tab="gta">
+            <h3>Grand Theft Auto V Content</h3>
+            <p>Grand Theft Auto V Cheat Codes.</p>
+        </div>
+        <div class="ui tab segment tab-content" data-tab="lego">
+            <h3>Lego Marvel Superheroes Content</h3>
+            <p>Lego Marvel Superheroes Cheat Codes.</p>
+        </div>
+        <div class="ui tab segment tab-content" data-tab="lg1">
+            <h3>Lego Batman 1</h3>
+            <p>lego batman 1 Cheat Codes.</p>
+        </div>
+        <div class="ui tab segment tab-content" data-tab="rdrd2">
+            <h3>Read Redemption 2</h3>
+            <p>RDRD2 Cheat Codes.</p>
+        </div>
+        <div class="ui tab segment tab-content" data-tab="about">
+            <h3>About Us / Contact Content</h3>
+            <p>Contact information and about us section.</p>
+        </div>
+    </div>
+    
+    <script>
+        $(document).ready(function() {
+            $('.ui.vertical.menu .item').tab();
+        });
+    </script>
+    </div>
+</body>
+</html>
