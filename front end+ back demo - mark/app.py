@@ -4,22 +4,6 @@ import hashlib
 
 app = Flask(__name__)
 
-#def init_db():
-   # with sqlite3.connect('new.db') as conn:
-       # conn.execute('''
-          #  CREATE TABLE IF NOT EXISTS USERS (
-          #      name TEXT,
-           #     email TEXT,
-          #      password TEXT
-           # )
-       # ''')
-
-
-
-#init_db()
-
-
-
 @app.route('/')
 @app.route("/home")
 def home():
@@ -60,11 +44,9 @@ def courses():
 @app.route('/welcome', methods=['GET', "POST"])
 def login():
     if request.method == "POST":
-        print("ARGHGhHHHHH")
         try:
             name = request.form['username']
             password = request.form['userpassword']
-            print("SIGN UP")
             with sqlite3.connect("udemy.db") as conn:
                 cursor = conn.cursor()
                 res = cursor.execute("SELECT User_Name FROM user;")
@@ -89,7 +71,6 @@ def login():
         except:
             name = request.form['name']
             password = request.form['password']
-            print("LOG IN")
 
             with sqlite3.connect("udemy.db") as conn:
                 cursor = conn.cursor()
@@ -107,7 +88,7 @@ def login():
                     count += 1
 
                 if hash_password == passwords[location][0]:
-                    return render_template("home.html", username = name)
+                    return render_template("home.html", user = name)
 
             return render_template("welcome.html")
         else:
