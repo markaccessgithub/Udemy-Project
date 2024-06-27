@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/semantic.min.js" integrity="sha512-Xo0Jh8MsOn72LGV8kU5LsclG7SUzJsWGhXbWcYs2MAmChkQzwiW/yTQwdJ8w6UA9C6EVG18GHb/TrYpYCjyAQw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/semantic.min.css" integrity="sha512-KXol4x3sVoO+8ZsWPFI/r5KBVB/ssCGB5tsv2nVOKwLg33wTFP3fmnXa47FdSVIshVTgsYk/1734xSk9aFIa4A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{{url_for('static', filename='scripts/sidebar.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='scripts/style.css')}}">
+    <title>Home</title>
+</head>
+<body>
+    <div class="main">
+    <div class="ui left thin visible inverted vertical sidebar menu">
+        <div class="sidebar-header">
+            <div> <!-- Placeholder for logo -->
+                <img src="{{url_for('static', filename='images/loog.png')}}" alt="Logo" class="sidebar-logo">
+            </div>
+        </div>
+        <a class="item" data-tab="login">
+            <i class="sign in icon"></i>
+            Log In
+        </a>
+        <a class="item" data-tab="signup">
+            <i class="sign in icon"></i>
+            Sign Up
+        </a>
+        <a class="item" href="/home">
+            <i class="sign in icon"></i>
+            Continue As Guest
+        </a>
+    </div>
+    <div class="pusher">
+        <div class="ui inverted tab segment active tab-content" data-tab="login">
+            <div class="ui inverted segment">
+                <div class = "ui inverted form">
+                    <form method="POST">
+                    <div class="two fields">
+                        <div class="field">
+                        <label for="name">Username</label>
+                        <input placeholder="Username" type="text" id="name" name="name" required>
+                    </div>
+                    <div class="field">
+                        <label for="password">Password</label>
+                        <input placeholder="Password" type="password" id="password" name="password" required>
+                    </div>
+
+                    <div class="inline field">
+                        <div class="ui submit button"><input type="submit" value="Submit"></div>
+                    </div>
+                    </div>
+                </form></div>
+            </div>
+        </div>
+
+        <div class="ui inverted tab segment tab-content" data-tab="signup">
+            <div class="ui inverted segment">
+                <div class="ui inverted form">
+                    <form method="POST">
+                    <div class="two fields">
+
+                        <div class="field">
+                        <label for="username">Username</label>
+                        <input placeholder="Username" type="text" id="username" name="username" required>
+                    </div>
+                    <div class="field">
+                        <label for="userpassword">Password</label>
+                        <input placeholder="Password" type="password" id="userpassword" name="userpassword" required>
+                    </div>
+                </div>
+                <div class="inline field">
+                    <div class="ui checkbox">
+                        <input type="checkbox" tabindex="0">
+                        <label>I agree to the <a>terms and conditions</a></label>
+                    </div>
+                    <div class="ui submit button"><input type="submit" value="Submit"></div>
+                    </form>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function() {
+            $('.ui.vertical.menu .item').tab();
+        });
+    </script>
+    </div>
+</body>
+</html>
