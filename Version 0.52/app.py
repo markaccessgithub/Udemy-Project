@@ -5,9 +5,28 @@ import hashlib
 app = Flask(__name__)
 
 @app.route('/')
-@app.route("/home")
+@app.route("/home", methods=['GET', 'POST'])
 def home():
-    return render_template("home.html", logged_in = False)
+    if request.method == "POST":
+        try:
+            print()
+            name = request.form["name"]
+            old_username = request.form["username"]
+            with sqlite3.connect("udemy.db") as conn:
+                cursor = conn.cursor()
+                res = cursor.execute(f"SELECT User_Id FROM user WHERE User_Name = '{old_username}'")
+                id = res.fetchall()
+                print(id)
+                cursor.execute(f"UPDATE user SET User_Name = '{name}' WHERE User_Id = {id[0][0]}")
+            
+                return render_template("home.html", logged_in = True, username = name)
+        except:
+            print("Error")
+            return redirect("/home")
+       
+    else:
+        print("HOME")
+        return render_template("home.html", logged_in = False)
 
 @app.route("/courses")
 def courses():
@@ -81,5 +100,5 @@ def user():
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=False, port=8001)
 
