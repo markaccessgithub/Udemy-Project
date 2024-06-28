@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/semantic.min.css" integrity="sha512-KXol4x3sVoO+8ZsWPFI/r5KBVB/ssCGB5tsv2nVOKwLg33wTFP3fmnXa47FdSVIshVTgsYk/1734xSk9aFIa4A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{{url_for('static', filename='scripts/sidebar.css')}}">
     <link rel="stylesheet" href="{{url_for('static', filename='scripts/style.css')}}">
-    <title>Home</title>
+    <script src="{{url_for('static', filename='scripts/main.js')}}" defer></script>
+    <title>Welcome</title>
 </head>
 <body>
     <div class="main">
@@ -35,20 +36,20 @@
         <div class="ui inverted tab segment active tab-content" data-tab="login">
             <div class="ui inverted segment">
                 <div class = "ui inverted form">
-                    <form method="POST">
+                    <form id="myForm" method="POST">
                     <div class="two fields">
                         <div class="field">
-                        <label for="name">Username</label>
-                        <input placeholder="Username" type="text" id="name" name="name" required>
+                            <label for="name">Username</label>
+                            <input placeholder="Username" type="text" id="name" name="name" required>
+                        </div>
+                        <div class="field">
+                            <label for="password">Password</label>
+                            <input placeholder="Password" type="password" id="password" name="password" required>
+                        </div>
+                        
                     </div>
-                    <div class="field">
-                        <label for="password">Password</label>
-                        <input placeholder="Password" type="password" id="password" name="password" required>
-                    </div>
-
                     <div class="inline field">
-                        <div class="ui submit button"><input type="submit" value="Submit"></div>
-                    </div>
+                        <div id="submitButton" class="ui submit button">Submit</div>
                     </div>
                 </form></div>
             </div>
@@ -57,7 +58,7 @@
         <div class="ui inverted tab segment tab-content" data-tab="signup">
             <div class="ui inverted segment">
                 <div class="ui inverted form">
-                    <form method="POST">
+                    <form id="myForm" method="POST">
                     <div class="two fields">
 
                         <div class="field">
@@ -74,8 +75,8 @@
                         <input type="checkbox" tabindex="0">
                         <label>I agree to the <a>terms and conditions</a></label>
                     </div>
-                    <div class="ui submit button"><input type="submit" value="Submit"></div>
-                    </form>
+                    <div id="submitButton" class="ui submit button">Submit</div>
+                </form>
                 </div>
                 </div>
             </div>

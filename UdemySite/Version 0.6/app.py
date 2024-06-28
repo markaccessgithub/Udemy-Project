@@ -1,5 +1,6 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, session
 import sqlite3
+from datetime import timedelta  
 import hashlib
 
 app = Flask(__name__)
@@ -54,11 +55,11 @@ def login():
                             list = res.fetchall()
                             id = list[-1][0]
                             cursor.execute(
-                                "INSERT INTO user (User_Id, User_Name, User_Password, User_Access) VALUES (?,?,?,?)", 
-                                ((id+1), name, hashlib.sha256(password.encode()).hexdigest(), 0)
+                                "INSERT INTO user (User_Id, User_Name, User_Password, User_Access) VALUES (?,?,?)", 
+                                ((id+1), name, hashlib.sha256(password.encode()).hexdigest())
                                 )
                             conn.commit()
-                        return render_template('welcome.html')
+                        return render_template('home.html', username = name, logged_in = True)
             return render_template('welcome.html')
     
         except:
