@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/semantic.min.js" integrity="sha512-Xo0Jh8MsOn72LGV8kU5LsclG7SUzJsWGhXbWcYs2MAmChkQzwiW/yTQwdJ8w6UA9C6EVG18GHb/TrYpYCjyAQw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/semantic.min.css" integrity="sha512-KXol4x3sVoO+8ZsWPFI/r5KBVB/ssCGB5tsv2nVOKwLg33wTFP3fmnXa47FdSVIshVTgsYk/1734xSk9aFIa4A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{{url_for('static', filename='scripts/sidebar.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='scripts/style.css')}}"> 
+    <script src="{{url_for('static', filename='scripts/main.css')}}" defer></script>
+    <title>Home</title>
+</head>
+<body>
+    <div class="main">
+    <div class="ui left thin visible inverted vertical sidebar menu">
+        <div class="sidebar-header">
+            <div> <!-- Placeholder for logo -->
+                <a href = '/home'><img  src="{{url_for('static', filename='images/loog.png')}}" alt="Logo" class="sidebar-logo"></a>
+            </div>
+        </div>
+        <a class="item" data-tab="home">
+            <i class="home icon"></i>
+            Home {{username}}
+        </a>
+        {% if logged_in %}
+        <a class="item" data-tab="account">
+            <i class="setting icon"></i>
+            Account
+        {% else %}
+            
+        {% endif %}
+        </a>
+        <a class="item" data-tab="gta">
+            <i class="info icon"></i>
+            Grand Theft Auto V
+        </a>
+        <a class="item" data-tab="lego">
+            <i class="info icon"></i>
+            Lego Marvel Superheroes
+        </a>
+        <a class="item" data-tab="lg1">
+            <i class="info icon"></i>
+            Lego Batman 1:<br>the Videogame
+        </a>
+        <a class="item" data-tab="rdrd2">
+            <i class="info icon"></i>
+             RD RD 2
+        </a>
+        <a class="item" data-tab="about">
+            <i class="info icon"></i>
+            About Us / Contact
+        </a>
+        <a class="item" href="/welcome">
+            <i class="sign out icon"></i>
+            {% if logged_in %}
+                Sign Out
+            {% else %}
+                Log In
+            {% endif %}
+        </a>
+    </div>
+
+    <div class="pusher">
+        <div class="ui tab segment active tab-content" data-tab="home">
+            <h3>Home Content</h3>
+            <p>Welcome to the Home page!</p>
+            <p>Unlock Your Gaming Potential With The Best Cheat Codes                                              
+
+                 Discover Cheat Codes For All Your Favorite Games                        
+                
+                 Get Codes Now                                                                                          
+                
+                 Join Our Community Of Gamers And Gain Instant Access To A Comprehensive Database Of Cheat Codes, Tips, And Tricks For Multiple Games.</p>
+        </div>
+        <div class="ui tab segment tab-content" data-tab="account">
+            <h1>Account Settings</h1>
+            <div class="ui inverted segment">
+                <div class = "ui inverted form">
+                    <form method="POST" action="/home">
+                        <div class="two fields">
+                            <div class="field">
+                            <label for="name">Change Username</label>
+                                <input placeholder="Username" type="text" id="name" name="name" required>
+                                <input type="hidden" for="username" name ="username" value={{username}} />
+                                <div class="ui submit button"><input type="submit" value="Submit"></div>
+                    </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ui tab segment tab-content" data-tab="gta">
+            <h3>GTA V Cheat Codes</h3>
+            <div class="ui checkbox">
+                <input type="checkbox" tabindex="0">
+                <label>Enroll</a></label>
+            </div>
+            <div class="ListContainer">
+                <div class="ui checkbox">
+                    <input type="checkbox" tabindex="0">
+                    <label>Completed</a></label>
+                </div>
+            <div class="MobileCodes GTA content">
+                    <h4>Mobile Codes:</h4>
+                    {% for code in gtav %}
+                        {%if code[1] == 'Phone'%}
+                            <dt><strong>{{code[2]}}</strong></dt>
+                            <dd>{{code[3]}}</dd>
+                        {% endif %}
+                    {% endfor %}
+            </div>
+            <div class="ui checkbox">
+                <input type="checkbox" tabindex="0">
+                <label>Completed</a></label>
+            </div>
+            <div class="VehicleCodes GTA content">
+                <h4>Vehicle Codes</h4>
+                {% for code in gtav %}
+                    {%if code[1] == 'Vehicle'%}
+                        <dt><strong>{{code[2]}}</strong></dt>
+                        <dd>{{code[3]}}</dd>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <div class="ui checkbox">
+                <input type="checkbox" tabindex="0">
+                <label>Completed</a></label>
+            </div>
+            <div class="PlayerAbility GTA content">
+                <h4>Player Ability Codes</h4>
+                {% for code in gtav %}
+                    {%if code[1] == 'Player Ability'%}
+                        <dt><strong>{{code[2]}}</strong></dt>
+                        <dd>{{code[3]}}</dd>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            </div>
+        </div>
+        <!---lego_marvel, lego_batman, gtav, red_dead-->
+        <div class="ui tab segment tab-content" data-tab="lego">
+            <h3>Lego Marvel Superheroes Cheat Codes</h3>
+            <div class="Character LegoMarvel">
+                <div class="ui checkbox">
+                    <input type="checkbox" tabindex="0">
+                    <label>Completed</a></label>
+                </div>
+                <h4>Character Codes:</h4>
+                {% for code in lego_marvel %}
+                    {%if code[1] == 'Character'%}
+                        <dt><strong>{{code[2]}}</strong></dt>
+                        <dd>{{code[3]}}</dd>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <div class="Vehicle LegoMarvel">
+                <h4>Vehicle Codes:</h4>
+                {% for code in lego_marvel %}
+                    {%if code[1] == 'Vehicle'%}
+                        <dt><strong>{{code[2]}}</strong></dt>
+                        <dd>{{code[3]}}</dd>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <div class="Extra LegoMarvel">
+                <h4>Extra Codes:</h4>
+                {% for code in lego_marvel %}
+                    {%if code[1] == 'Extra'%}
+                        <dt><strong>{{code[2]}}</strong></dt>
+                        <dd>{{code[3]}}</dd>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+        <div class="ui tab segment tab-content" data-tab="lg1">
+            <h3>Lego Batman 1</h3>
+            <p>lego batman 1 Cheat Codes.</p>
+        </div>
+        <div class="ui tab segment tab-content" data-tab="rdrd2">
+            <h3>Read Redemption 2 Cheat Codes</h3>
+            <div class="ui checkbox">
+                <input type="checkbox" tabindex="0">
+                <label>Completed</a></label>
+            </div>
+            <div class="Health&Stamina RDRD2">
+                <h4>Health & Stamina Codes:</h4>
+                {% for code in red_dead %}
+                    {%if code[1] == 'Health and Stamina'%}
+                        <dt><strong>{{code[2]}}</strong></dt>
+                        <dd>{{code[3]}}</dd>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <div class="Horses RDRD2">
+                <h4>Horse Codes:</h4>
+                {% for code in red_dead %}
+                    {%if code[1] == 'Horses'%}
+                        <dt><strong>{{code[2]}}</strong></dt>
+                        <dd>{{code[3]}}</dd>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <div class="Weapons&Ammo RDRD2">
+                <h4>Weapons & Ammo Codes:</h4>
+                {% for code in red_dead %}
+                    {%if code[1] == 'Weapons and Ammo'%}
+                        <dt><strong>{{code[2]}}</strong></dt>
+                        <dd>{{code[3]}}</dd>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <div class="Money&Items RDRD2">
+                <h4>Money & Items Codes:</h4>
+                {% for code in red_dead %}
+                    {%if code[1] == 'Money and Items'%}
+                        <dt><strong>{{code[2]}}</strong></dt>
+                        <dd>{{code[3]}}</dd>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <div class="DeadEye RDRD2">
+                <h4>Dead Eye Codes:</h4>
+                {% for code in red_dead %}
+                    {%if code[1] == 'Dead Eye'%}
+                        <dt><strong>{{code[2]}}</strong></dt>
+                        <dd>{{code[3]}}</dd>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <div class="Miscellaneous RDRD2">
+                <h4>Miscellaneous Codes:</h4>
+                {% for code in red_dead %}
+                    {%if code[1] == 'Miscellaneous'%}
+                        <dt><strong>{{code[2]}}</strong></dt>
+                        <dd>{{code[3]}}</dd>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+        <div class="ui tab segment tab-content" data-tab="about">
+            <h3>About Us / Contact Content</h3>
+            <p>
+                We are all very cool developers and this epic website was <br>
+                thanks to the epic handsome people: Matthew, Mark, Luke, Jacob and Jack
+            </p>
+            <br>
+            <p>If you have any questions please email</p>
+            <a href = luke.willson.224@accesscreative.ac.uk><p>luke.willson.224@accesscreative.ac.uk</p></a>
+        </div>
+    </div>
+    
+    <script>
+        $(document).ready(function() {
+            $('.ui.vertical.menu .item').tab();
+        });
+    </script>
+    </div>
+
+    
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.ui.dropdown').dropdown();
+        });
+    </script>
+
+</html>

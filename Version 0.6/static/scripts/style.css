@@ -1,0 +1,27 @@
+/* General styles */
+
+/* Reset default margin and padding */
+html{
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #30475eff;
+}
+
+/* Box-sizing border-box for all elements */
+* {
+    box-sizing: border-box;
+}
+.ui.inverted.segment, .ui.primary.inverted.segment{
+    background:#595959ff;
+}
+
+.ListContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
